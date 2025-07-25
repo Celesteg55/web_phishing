@@ -18,8 +18,8 @@ In this project, I will determine which components of a URL are most strongly as
 
 ### Data Sources
 
-web_page_fishing: contains high-level URL metrics and phishing label
-phishing_dataset: contains counts of special characters and other URL components
+-web_page_fishing: contains high-level URL metrics and phishing label
+-phishing_dataset: contains counts of special characters and other URL components
 
 ### Tools
 
