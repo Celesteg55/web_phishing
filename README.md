@@ -1,15 +1,18 @@
 # Web Page Phishing Project
 
 ### Project Overview
-In this project, I will analyze web page URL phishing data to determine which fields in a URL suggest that the URL may be phishing.
+In this project, I will determine which components of a URL are most strongly associated with phishing activity by analyzing the relationship between URL structure (special characters, length, redirections, etc.) and the phishing label.
 
 ### Data Sources
 Vrbančič, Grega (2020), “Phishing Websites Dataset”, Mendeley Data, V1, doi: 10.17632/72ptz43s9v.1
+web_page_fishing: contains high-level URL metrics and phishing label
+phishing_dataset: contains counts of special characters and other URL components
 
 ### Tools
 
-SQL SERVER - Data Analysis 
-Python - Creating Reports 
+SSQL (for data retrieval and joining tables)
+Correlation analysis (to assess linear relationships)
+Visualization (scatter plots)
 
 ### Data Cleaning/Preparation
 
@@ -26,8 +29,8 @@ Based on your analysis, what advice would you give to others for deciphering whe
 
 ### Data Analysis
 
+```sql
 SELECT
-
     w.unique_id,
     w.url_length,
     w.n_redirection,
@@ -50,14 +53,17 @@ SELECT
     p.n_dollar,
     p.n_percent
 FROM
-
     web_page_fishing w
-
 JOIN
-
     phishing_dataset p
-
 ON
-
     w.unique_id = p.unique_id;
+```
+
+### Results/Findings 
+This analysis highlights that certain structural URL features, especially slashes and hyphens, are strong indicators of phishing. Other common assumptions, like URL length or Google indexing, have minimal value.
+By focusing on high-signal indicators and combining them in a multi-feature system, organizations can more accurately flag suspicious URLs and protect users from phishing attacks.
+
+
+
 
