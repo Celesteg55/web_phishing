@@ -16,8 +16,6 @@
 
 In this project, I will determine which components of a URL are most strongly associated with phishing activity by analyzing the relationship between URL structure (special characters, length, redirections, etc.) and the phishing label.
 
-
-
 ### Data Sources
 
 web_page_fishing: contains high-level URL metrics and phishing label
