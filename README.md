@@ -14,10 +14,11 @@
 
 ### Project Overview
 
+---
+
 In this project, I will determine which components of a URL are most strongly associated with phishing activity by analyzing the relationship between URL structure (special characters, length, redirections, etc.) and the phishing label.
 
 <img width="600" height="350" alt="image" src="https://github.com/user-attachments/assets/8a78fda1-66e7-416b-bfbd-d26e0f754497" />
-
 
 
 
@@ -119,4 +120,6 @@ The analysis identifies statistical relationships but cannot confirm cause-and-e
 ### References 
 
 Vrbančič, Grega (2020), “Phishing Websites Dataset”, Mendeley Data, V1, doi: 10.17632/72ptz43s9v.1
+
+
 
