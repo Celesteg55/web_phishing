@@ -1,5 +1,17 @@
 # Web Page Phishing Project
 
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Data Sources](#data-sources)
+- [Tools](#tools)
+- [Data Cleaning and Preparation](#data-cleaning-and-preparation)
+- [Exploratory Data Analysis](#exploratory-data-analysis)
+- [Data Analysis](#data-analysis)
+- [Results and Findings](#results-and-findings)
+- [Recommendations](#recommendations)
+- [Limitations](#limitations)
+- [References](#references)
+
 ### Project Overview
 
 In this project, I will determine which components of a URL are most strongly associated with phishing activity by analyzing the relationship between URL structure (special characters, length, redirections, etc.) and the phishing label.
@@ -15,7 +27,7 @@ SSQL (for data retrieval and joining tables)
 Correlation analysis (to assess linear relationships)
 Visualization (scatter plots)
 
-### Data Cleaning/Preparation
+### Data Cleaning and Preparation
 
 In the initial data preparation phase we performed the following 
 Data cleaning and formatting
@@ -61,7 +73,8 @@ ON
     w.unique_id = p.unique_id;
 ```
 
-### Results/Findings 
+### Results and Findings 
+
 1. Strongest Correlation
 Feature: n_slash (number of slashes in the URL)
 Interpretation:
@@ -96,11 +109,9 @@ By integrating these practices, you can develop a more robust and reliable syste
 
 ### Limitations 
 
-Correlation ≠ Causation
 The analysis identifies statistical relationships but cannot confirm cause-and-effect. For example, URLs with more slashes may correlate with phishing, but that doesn’t mean slashes cause phishing behavior.
 
 ### References 
 
 Vrbančič, Grega (2020), “Phishing Websites Dataset”, Mendeley Data, V1, doi: 10.17632/72ptz43s9v.1
-
 
