@@ -11,32 +11,53 @@ Vrbančič, Grega (2020), “Phishing Websites Dataset”, Mendeley Data, V1, do
 SQL SERVER - Data Analysis 
 Python - Creating Reports 
 
-### SQL Practice
+### Data Cleaning/Preparation
 
-Pretend there is an additional field in this dataset that assigns each row a unique number, or key.  This additional field is called unique_id and it is the first field in the dataset.  Pretend this data was stored in two different tables in a SQL server.  The first table is named web_page_fishing and it contains the following fields:
+In the initial data preparation phase we performed the following 
+Data cleaning and formatting
 
-unique_id
-url_length
-n_redirection
-phishing
+### Exploratory Data Analysis 
 
-### The second table is named phishing_dataset and it contains the following fields:
-unique_id
-n_dots
-n_hyphens
-n_underline
-n_slash
-n_questionmark
-n_equal
-n_at
-n_and
-n_exclamation
-n_space
-n_tilde
-n_comma
-n_plus
-n_asterisk
-n_hashtag
-n_dollar
-n_percent
+What SQL code would you write to query all of the data contained in the provided dataset?
+Which field(s) has/have the strongest correlation with the “phishing” field?  Which field(s) has/have the weakest correlation with the “phishing” field?
+Would you say that the URL length is a strong indicator of whether or not the URL is phishing?  Why or why not?  What metrics do you have to support your answer?
+Would you say the number of redirections is a strong indicator of whether or not the URL is phishing?  Why or why not?  What metrics do you have to support your answer?
+Based on your analysis, what advice would you give to others for deciphering whether or not a URL is phishing?
+
+### Data Analysis
+
+SELECT
+
+    w.unique_id,
+    w.url_length,
+    w.n_redirection,
+    w.phishing,
+    p.n_dots,
+    p.n_hyphens,
+    p.n_underline,
+    p.n_slash,
+    p.n_questionmark,
+    p.n_equal,
+    p.n_at,
+    p.n_and,
+    p.n_exclamation,
+    p.n_space,
+    p.n_tilde,
+    p.n_comma,
+    p.n_plus,
+    p.n_asterisk,
+    p.n_hashtag,
+    p.n_dollar,
+    p.n_percent
+FROM
+
+    web_page_fishing w
+
+JOIN
+
+    phishing_dataset p
+
+ON
+
+    w.unique_id = p.unique_id;
 
