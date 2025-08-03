@@ -2,10 +2,154 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Celeste Garza | Data Analyst Portfolio</title>
+  <title>Web Page Phishing Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #003366;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+    hr {
+      margin: 30px 0;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to Celeste Garza's Portfolio</h1>
-  <p>This site is under construction. Please check back soon!</p>
+
+  <h1>Web Page Phishing Project</h1>
+
+  <h2>Table of Contents</h2>
+  <ul>
+    <li><a href="#project-overview">Project Overview</a></li>
+    <li><a href="#data-sources">Data Sources</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#data-cleaning-and-preparation">Data Cleaning and Preparation</a></li>
+    <li><a href="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+    <li><a href="#data-analysis">Data Analysis</a></li>
+    <li><a href="#results-and-findings">Results and Findings</a></li>
+    <li><a href="#recommendations">Recommendations</a></li>
+    <li><a href="#limitations">Limitations</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+
+  <hr>
+
+  <h3 id="project-overview">Project Overview</h3>
+  <p>In this project, I determined which components of a URL are most strongly associated with phishing activity by analyzing the relationship between URL structure (special characters, length, redirections, etc.) and the phishing label.</p>
+  <img src="https://github.com/user-attachments/assets/8a78fda1-66e7-416b-bfbd-d26e0f754497" alt="Phishing Project Image" width="600" height="350" />
+
+  <h3 id="data-sources">Data Sources</h3>
+  <ul>
+    <li><code>web_page_fishing</code>: contains high-level URL metrics and phishing label</li>
+    <li><code>phishing_dataset</code>: contains counts of special characters and other URL components</li>
+  </ul>
+
+  <h3 id="tools">Tools</h3>
+  <ul>
+    <li>SQL (for data retrieval and joining tables)</li>
+    <li>Correlation analysis (to assess linear relationships)</li>
+    <li>Visualization (scatter plots)</li>
+  </ul>
+
+  <h3 id="data-cleaning-and-preparation">Data Cleaning and Preparation</h3>
+  <p>In the initial data preparation phase, we performed the following:</p>
+  <ul>
+    <li>Data cleaning and formatting</li>
+  </ul>
+
+  <h3 id="exploratory-data-analysis">Exploratory Data Analysis</h3>
+  <p>Key questions:</p>
+  <ul>
+    <li>What SQL code would you write to query all of the data contained in the provided dataset?</li>
+    <li>Which field(s) has/have the strongest correlation with the “phishing” field?</li>
+    <li>Would you say that the URL length is a strong indicator of whether or not the URL is phishing? Why or why not?</li>
+    <li>Would you say the number of redirections is a strong indicator of whether or not the URL is phishing?</li>
+    <li>Based on your analysis, what advice would you give to others for deciphering whether or not a URL is phishing?</li>
+  </ul>
+
+  <h3 id="data-analysis">Data Analysis</h3>
+  <pre><code>SELECT
+    w.unique_id,
+    w.url_length,
+    w.n_redirection,
+    w.phishing,
+    p.n_dots,
+    p.n_hyphens,
+    p.n_underline,
+    p.n_slash,
+    p.n_questionmark,
+    p.n_equal,
+    p.n_at,
+    p.n_and,
+    p.n_exclamation,
+    p.n_space,
+    p.n_tilde,
+    p.n_comma,
+    p.n_plus,
+    p.n_asterisk,
+    p.n_hashtag,
+    p.n_dollar,
+    p.n_percent
+FROM
+    web_page_fishing w
+JOIN
+    phishing_dataset p
+ON
+    w.unique_id = p.unique_id;</code></pre>
+
+  <h3 id="results-and-findings">Results and Findings</h3>
+  <ol>
+    <li><strong>Strongest Correlation</strong><br>
+    <em>Feature:</em> <code>n_slash</code><br>
+    URLs with more slashes are significantly more likely to be phishing.</li>
+
+    <li><strong>Weakest Correlations</strong><br>
+    <em>Features:</em><br>
+    - <code>url_google_index</code>: Correlation: -0.009<br>
+    - <code>domain_google_index</code>: Correlation: 0.0008<br>
+    These have minimal predictive value.</li>
+
+    <li><strong>URL Length Analysis</strong><br>
+    Observation: No clear pattern in scatter plot<br>
+    Conclusion: URL length is not a strong indicator of phishing.<br>
+    Correlation Coefficient: 0.699</li>
+  </ol>
+
+  <p>Structural features like slashes and hyphens are more predictive than assumptions like Google indexing or total length.</p>
+
+  <h3 id="recommendations">Recommendations</h3>
+  <ul>
+    <li>Focus on strong indicators like <code>qty_slash_url</code>, which showed the highest correlation.</li>
+    <li>Monitor characters like dots (<code>qty_dot_url</code>) and hyphens (<code>qty_hyphen_url</code>).</li>
+    <li>Use multiple features together in a machine learning model for better accuracy.</li>
+    <li>Update your detection models regularly with new data.</li>
+  </ul>
+
+  <h3 id="limitations">Limitations</h3>
+  <p>This analysis identifies statistical relationships but cannot confirm causation. For instance, more slashes may correlate with phishing but do not necessarily cause it.</p>
+
+  <h3 id="references">References</h3>
+  <p>Vrbančič, Grega (2020), “Phishing Websites Dataset”, Mendeley Data, V1, doi: <a href="https://doi.org/10.17632/72ptz43s9v.1" target="_blank">10.17632/72ptz43s9v.1</a></p>
+
 </body>
 </html>
